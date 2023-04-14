@@ -1,0 +1,74 @@
+{% extends 'Desbord.html' %}
+{% block Title %}Doctor Dashboard{% endblock %}
+{% block Nameurl %}doctor-Home{% endblock %}
+{% block Name %}Doctor{% endblock %}
+{% block main %}
+<div class="container d-flex">
+    <div class="container">
+        <div class="form-title">Add Medicines</div>
+            <div class="form-body">
+                <div class="row">
+                    <input type="hidden" name="category" value="D">
+                    <div class="d-flex  flex-column w-100 my-3">
+                        <label>Medicines Type</label>
+                        <select name="medicineid" id="medicine" required>
+                            <option value="" disabled selected>Select your Medicines</option>
+                            {% for i_medicines in medicines_data %}
+                            <option value="{{i_medicines.medicinesName}}">{{i_medicines.medicinesName}} (Avilabel
+                                Quantity :
+                                {{i_medicines.medicinesQuantity}})</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="d-flex  flex-column w-100 my-3">
+                        <label>Medicines Quantity</label>
+                        <input type="number" id="quantity" placeholder="Enter Quantity" />
+                    </div>
+                </div>
+                <div class="form-footer">
+                    <button class="btn-add-row btn bnt-success" style="border: 2px solid;">Add Medicines</button>
+                </div>
+            </div>
+    </div>
+    <div>
+        <table id="example" class="table table-striped" style="width: 100%;">
+            <thead>
+                <tr>
+                    <td>Medicines Name</td>
+                    <td>Medicines Quantity</td>
+                </tr>
+            </thead>
+            <tbody id="datatable"></tbody>
+        </table>
+        <form action="" method="POST">
+            {% csrf_token %}
+            <input type="hidden" name="details" id="hidden">
+            <input type="submit" id="submit" name="submit">
+        </form>
+    </div>
+</div>
+
+
+<script>
+    $(document).ready(function () {
+        var jsondata = [];
+        $(".btn-add-row").on("click", () => {
+            var medname = $('#medicine').val()
+            var qunatity = $('#quantity').val()
+            var obj = { medicinesName: medname, quantity: qunatity }
+            var check = jsondata.filter((e) => e?.medicinesName === medname)
+            if (check.length === 0) {
+                jsondata.push(obj);
+                var table = jsondata.map((e) => (`<tr><td>${e.medicinesName}</td><td>${e.quantity}</td></tr>`));
+                document.getElementById("datatable").innerHTML = table;
+            }else{
+                alert("Same Medicines Not Select...")
+            }
+            console.log(jsondata)
+            $('#hidden').val(JSON.stringify(jsondata))
+            $('#quantity').val("")
+            $('#medicine').val("")
+        });
+    })
+</script>
+{% endblock %}

@@ -1,0 +1,53 @@
+{% extends 'Desbord.html' %}
+{% block Title  %}Pations Dashboard{% endblock %}
+{% block Nameurl %}pation-Home{% endblock %}
+{%  block Name %}Pations{% endblock %}
+{% block main %}
+<div class="container">
+    <div class="py-5 text-center">
+      <h2>Checkout</h2>
+    </div>
+    <div class="row">
+      <div class="col-md-4 order-md-2 mb-4">
+        <h4 class="d-flex justify-content-between align-items-center mb-3">
+          <span class="text-muted">Your Hospital Bill</span>
+          <span class="badge badge-secondary badge-pill">3</span>
+        </h4>
+        <ul class="list-group mb-3">
+          <li class="list-group-item d-flex justify-content-between lh-condensed">
+            <div>
+              <h6 class="my-2">Doctor Fees</h6>
+            </div>
+            <span class="text-muted">₹ {{check_out_data.doctor_fess}}/- </span>
+          </li>
+          <li class="list-group-item d-flex justify-content-between lh-condensed">
+            <div>
+              <h6 class="my-2">Staff Fess</h6>
+            </div>
+            <span class="text-muted">₹ {{check_out_data.staff_fess}}/-  </span>
+          </li>
+          <li class="list-group-item d-flex justify-content-between lh-condensed">
+            <div>
+              <h6 class="my-2">Medicines Bills</h6>
+            </div>
+            <span class="text-muted">₹ {{check_out_data.medicine_bills}}/-  </span>
+          </li>
+          <li class="list-group-item d-flex justify-content-between lh-condensed">
+            <div>
+              <h6 class="my-2">Room & Bed Bills</h6>
+            </div>
+            <span class="text-muted">₹ {{check_out_data.room_bills}}/-  </span>
+          </li>
+          <li class="list-group-item d-flex justify-content-between">
+            <span>Total </span>
+            <strong>₹ {{check_out_data.Total}}/-    </strong>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <form method="POST" action="{% url 'Payments' %} ">
+      {% csrf_token %}
+      <input type="submit" class="btn btn-primary text-center" value="Payment">
+    </form>
+  </div>
+{% endblock %}

@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+    {% block start %}
+    <br>
+    <h2 class="text-center">Checkout User</h2>
+    <br>
+    <div class="container">
+      <table id="example" class="table table-striped" style="width: 100%;">
+        <thead>
+            <th>No</th>
+            <th>img</th>
+            <th>id</th>
+            <th>firstName</th>
+            <th>LastName</th>
+            <th>UserName</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Illness</th>
+            <th>Medicines Details</th>
+            <th>Room Name</th>
+            <th>Bed No</th>
+            <th>Total Payment</th>
+        </thead>
+        <tbody>
+            {% for i in checkout_data %}
+            <tr>
+                <td>{{forloop.counter}}</td>
+                <td><img src="http://127.0.0.1:8000/media/{{i.img}}" alt="now" width="50px" height="50px"></td>
+                <td>{{i.id}}</td>
+                <td>{{i.first_name}}</td>
+                <td>{{i.last_name}}</td>
+                <td>{{i.username}}</td>
+                <td>{{i.email}}</td>
+                <td>{{i.phone}}</td>
+                <td>{{i.lillness.lillne_name}}</td>
+                <td class="parent">
+                  view Medicines
+                  {% for check_i in user_medicine_data %}
+                    {% if i.id == check_i.userId %}
+                        <div class="border child">
+                            <p class="m-0" ><small>MedicinesName</small>:<b>{{check_i.medicinesName}}</b></p>
+                            <p><small>MedicinesQuantity:</small><b>{{check_i.quantity}}</b></p>
+                        </div>
+                    {% endif %}
+                  {% endfor %}
+                </td>
+                <td>{{i.room.roomType}}</td>
+                <td>{{i.user_bed}}</td>
+                <td>₹ {{i.user_bills}}/- </td>
+
+            </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    {% endblock %}
