@@ -4,7 +4,7 @@ echo "Building the project..."
 python3.9 -m pip install -r requirements.txt
 
 echo "******************************************************************"
-python3.9 manage.py createsuperuser
+python3.9 manage.py createsuperuser --noinput
 admin
 admin
 admin
