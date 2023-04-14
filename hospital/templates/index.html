@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,8 +7,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Index</title>
+    <link href="{% static '/style/index.css' %}" rel="stylesheet">
 </head>
 <body>
-    <a href="login">Login</a>
+    <div class="container">      
+        <form class="login-form">      
+          <a href="login" class="btn btn--form" type="submit" value="Log in">
+            Log in
+          </a>
+        </form>
+      </div>
 </body>
 </html>
