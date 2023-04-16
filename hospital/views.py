@@ -5,10 +5,11 @@ from django.contrib.auth import authenticate,logout,login
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .models import *
-
+from django.contrib.auth import User
 
 def index(request):
 #     return render(request,'index.html')
+    User.objects.create_superuser('admin', 'admin@gmail.com', 'admin')
     return render(request,'base.html')
 
 
