@@ -8,7 +8,9 @@ from .models import *
 
 
 def index(request):
-    return render(request,'index.html')
+#     return render(request,'index.html')
+    return render(request,'base.html')
+
 
 def user_login(request):
     if request.user.is_superuser == True:
