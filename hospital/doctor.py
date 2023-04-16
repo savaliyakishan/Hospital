@@ -9,9 +9,9 @@ import json
 from django.db.models import Q
 
 
-# @login_required(login_url='/login/')
+@login_required(login_url='/login/')
 def adddoctor(request):
-#     if request.user.is_superuser == True:
+    if request.user.is_superuser == True:
         user_data = User()
         data_illness = Lillnes.objects.all()
         if request.method == 'POST':
@@ -43,7 +43,7 @@ def adddoctor(request):
             messages.success(request, 'Insert Sucessfully')
             return render(request, 'base.html')
         return render(request, 'adddoctor.html', {'data': data_illness})
-#     return HttpResponseNotFound('Page Not Found')
+    return HttpResponseNotFound('Page Not Found')
 
 
 @login_required(login_url='/login/')
