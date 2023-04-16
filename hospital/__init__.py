@@ -1,1 +1,1 @@
-default_app_config = 'hospital.apps.HospitalConfig'
+default_app_config = 'myapp.apps.HospitalConfig'
