@@ -6,5 +6,5 @@ class HospitalConfig(AppConfig):
     name = 'hospital'
     
     def ready(self):
-        import myapp.signals  # noqa
+        import hospital.signals
 
