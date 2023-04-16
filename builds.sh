@@ -14,9 +14,9 @@ python3.9 manage.py migrate --noinput
 
 echo "###################################################################"
 # echo "from django.contrib.auth import get_user_model; User = get_user_model(); User.objects.create_superuser('admin', 'admin@example.com', 'password')" | python manage.py shell
-python manage.py shell << END
+python3.9 manage.py shell
 from django.contrib.auth.models import User
-if not User.objects.filter(username='admin').exists():
-    User.objects.create_superuser('admin', 'admin@example.com', 'password')
-END
+User.objects.create_superuser('admin', 'admin@example.com', 'admin')
+echo "#################################dfasfdsdsf##################################"
+
 python3.9 manage.py collectstatic --noinput
