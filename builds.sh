@@ -13,6 +13,10 @@ echo "Make Migration...3"
 python3.9 manage.py migrate --noinput
 
 echo "###################################################################"
-echo "from django.contrib.auth import get_user_model; User = get_user_model(); User.objects.create_superuser('admin', 'admin@example.com', 'password')" | python manage.py shell
-
+# echo "from django.contrib.auth import get_user_model; User = get_user_model(); User.objects.create_superuser('admin', 'admin@example.com', 'password')" | python manage.py shell
+python manage.py shell << END
+from django.contrib.auth.models import User
+if not User.objects.filter(username='admin').exists():
+    User.objects.create_superuser('admin', 'admin@example.com', 'password')
+END
 python3.9 manage.py collectstatic --noinput
