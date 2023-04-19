@@ -23,7 +23,7 @@ class User(AbstractUser):
     fess = models.IntegerField(db_column="Fess",blank=True,null=True)
     category = models.CharField(db_column="Category",max_length=255,blank=True,null=True)
     phone = models.BigIntegerField(db_column="Phone",blank=True,null=True)
-    img = models.ImageField(upload_to='img',blank=True,null=True,db_column="User_Img")
+    img = models.ImageField(upload_to='',blank=True,null=True,db_column="User_Img")
     doctor_id = models.IntegerField(db_column="Doctor_Id",blank=True,null=True)
     staff_id = models.IntegerField(db_column="Staff_Id",blank=True,null=True)
     check_out_status = models.CharField(db_column="Check_Out",default=False,max_length=255)
