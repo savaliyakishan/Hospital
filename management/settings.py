@@ -123,8 +123,8 @@ AUTH_USER_MODEL = 'hospital.User'
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = os.path.join(BASE_DIR,'hospital/static'),
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'hospital/static')
+STATICFILES_DIRS = os.path.join(BASE_DIR,'static'),
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'static')
 
 # MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_ROOT = os.path.join(BASE_DIR, 'static_cdn', 'media_root')
