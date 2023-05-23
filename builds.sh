@@ -16,3 +16,5 @@ python3.9 manage.py migrate --noinput
 
 echo "####################################collect###############################"
 
+mkdir -p /media/user/
+chmod -R 777 /media/user/
