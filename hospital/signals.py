@@ -7,4 +7,4 @@ from django.dispatch import receiver
 def create_superuser(sender, **kwargs):
     """Create a superuser when the application is first deployed."""
     User = get_user_model()
-    User.objects.create_superuser('admin', 'admin@example.com', 'admin')
+    User.objects.create_superuser('admin', 'admin@gmail.com', 'admin')
